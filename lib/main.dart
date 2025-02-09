@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water_tracker_bay/features/home_page/presentation/pages/home_page.dart';
 
 void main(){
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
-    Home(),
+    HomePage(),
     Center(child: Text('Analysis', style: TextStyle(fontSize: 24))),
     Center(child: Text('Alarm', style: TextStyle(fontSize: 24))),
     Center(child: Text('Setting', style: TextStyle(fontSize: 24))),
@@ -23,60 +24,18 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
+        setState(() {
       _selectedIndex = index;
     });
   }
-  
-  @override 
+
+  @override
   Widget build(BuildContext context){
     return MaterialApp(
+      title: 'testing',
       home: Scaffold(
-        backgroundColor: Colors.blue.shade50,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-            children:[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Good Morning,',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text('Aashifa Sheikh',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FloatingActionButton(
-                    elevation: 0,
-                    backgroundColor: Colors.white,
-                    onPressed: Placeholder.new, 
-                    shape: CircleBorder(),
-                    mini: true, 
-                    child: Icon(
-                      Icons.notifications,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        body: _pages[_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             const BottomNavigationBarItem(
               icon: Icon(Icons.home_filled),
@@ -151,169 +110,5 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-  } 
-}
-
-class Home extends StatefulWidget {
-  const Home({super.key});
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home>{
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(50),
-        child: ListBody(
-          children: [
-            Container(
-              width: 100,
-              height: 175,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '11:00 AM',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w900
-                      ),
-                    ),
-                    Text(
-                      '200ml water(2 Glass)',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.grey
-                      ),
-                    )
-                  ]
-                ),  
-              )
-            ),
-            Container(
-              height: 50,
-            ),
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,  
-                  child: Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.blue.shade200,
-                        width: 10
-                      )  
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(0,50,0,0),
-                      child: Center(
-                          child: Text(
-                            '500ml',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700
-                            ),
-                          )
-                      )
-                    ),
-                  )
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    width: 200,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('9:30 AM'),
-                          Expanded(
-                            child:Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child:Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('100ml'),
-                                  ) 
-                                ),
-                                Expanded(
-                                  child:Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Text('10%'),
-                                  ) 
-                                )
-                              ],
-                            )
-                          )
-                        ],
-                      )
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 100,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              'Target',
-                              selectionColor: Colors.grey  
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text(
-                              '2000ml',
-                            ),
-                          )
-                        ],    
-                      ),
-                    ),
-                  )
-                )
-              ],
-            )
-          ],
-        ),
-      )
-    );
   }
 }
-
